@@ -1,5 +1,8 @@
 Revision history for Perl extension AI::NeuralNet::Kohonen::Demo::RGB.
 
+0.03  Fri May 05 21:17:00 2006
+	Packaged, test and pod fix
+
 0.02  Thu Mar 20 2003 11:25 2003
 	Now a sub-class of AI::NeuralNet::Kohonen::Visual.
 

@@ -2,5 +2,6 @@ Changes
 Makefile.PL
 MANIFEST
 README
-Visual.pm
-test.pl
+t/AI-NeuralNet-Kohonen-Visual.t
+lib/AI/NeuralNet/Kohonen/Visual.pm
+META.yml                                 Module meta-data (added by MakeMaker)

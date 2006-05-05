@@ -1,7 +1,7 @@
 package AI::NeuralNet::Kohonen::Visual;
 
 use vars qw/$VERSION/;
-$VERSION = 0.2; # 17 April 2003
+$VERSION = 0.3; # 05 May 2006 pod and packaging
 
 =head1 NAME
 
@@ -9,12 +9,14 @@ AI::NeuralNet::Kohonen::Visual - Tk-based Visualisation
 
 =head1 SYNOPSIS
 
-	package MyClass;
-	base "AI::NeuralNet::Kohonen::Visual";
+Test the test file in this distribution, or:
+
+	package YourClass;
+	use base "AI::NeuralNet::Kohonen::Visual";
 
 	sub get_colour_for { my ($self,$x,$y) = (shift,shift,shift);
 		# From here you return a TK colour name.
-		# Get it as you please, for example, values of a 3D map:
+		# Get it as you please; for example, values of a 3D map:
 		return sprintf("#%02x%02x%02x",
 			(int (255 * $self->{map}->[$x]->[$y]->{weight}->[0])),
 			(int (255 * $self->{map}->[$x]->[$y]->{weight}->[1])),
@@ -25,18 +27,28 @@ AI::NeuralNet::Kohonen::Visual - Tk-based Visualisation
 	exit;
 	1;
 
-	use MyClass;
-	$_ = MyClass->new(
-		display_scale => 20,
-		display	=> 'hex',
-		map_dim	=> 39,
-		epochs  => 9,
-		table   => "R G B"
-	              ."1 0 0"
-	              ."0 1 0"
-	              ."0 0 1",
+And then:
+
+	use YourClass;
+	my $net = AI::NeuralNet::Kohonen::Visual->new(
+		display          => 'hex',
+		map_dim          => 39,
+		epochs           => 19,
+		neighbour_factor => 2,
+		targeting        => 1,
+		table            => "3
+			1 0 0 red
+			0 1 0 yellow
+			0 0 1 blue
+			0 1 1 cyan
+			1 1 0 yellow
+			1 .5 0 orange
+			1 .5 1 pink",
 	);
-	$_->train;
+	$net->train;
+	$net->plot_map;
+	$net->main_loop;
+
 	exit;
 
 
